@@ -5,10 +5,7 @@ data class EnumStruct(
     val entries: Set<String>
 ): Struct {
     override fun toTypescriptType(): String {
-        return """
-export enum $name {
-${entries.joinToString(",\n") { "  $it" }}
-}
-        """.trimIndent()
+        val quotedEntries = entries.joinToString(" | ") { "'$it'" }
+        return "export type $name = $quotedEntries;"
     }
 }

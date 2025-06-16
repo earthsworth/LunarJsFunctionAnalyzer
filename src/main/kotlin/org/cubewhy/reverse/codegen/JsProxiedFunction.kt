@@ -11,6 +11,6 @@ data class JsProxiedFunction(
             "arg$i: ${type.toTsType()}"
         }
         val returnType = descriptor.returnType.toTsType()
-        return "function $functionName($args): $returnType;"
+        return "$functionName($args): $returnType;"
     }
 }
