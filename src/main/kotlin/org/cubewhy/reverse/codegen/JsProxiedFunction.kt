@@ -5,12 +5,12 @@ data class JsProxiedFunction(
     val descriptor: MethodDescriptor,
 
     val namespace: String?
-) {
+) /* {
     fun toTsFunctionDeclaration(): String {
-        val args = descriptor.types.withIndex().joinToString(", ") { (i, type) ->
+        val args = descriptor.parameterTypes.withIndex().joinToString(", ") { (i, type) ->
             "arg$i: ${type.toTsType()}"
         }
         val returnType = descriptor.returnType.toTsType()
         return "$functionName($args): $returnType;"
     }
-}
+} */

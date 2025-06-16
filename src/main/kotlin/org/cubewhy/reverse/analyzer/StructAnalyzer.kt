@@ -38,7 +38,7 @@ class StructAnalyzer(file: File) : AutoCloseable {
 
     private fun readToClassNodes(functions: List<JsProxiedFunction>): List<ClassNode> =
         functions
-            .flatMap { it.descriptor.types }
+            .flatMap { it.descriptor.parameterTypes }
             .filter { !it.isKnownType }
             .mapNotNull { jarFile.getJarEntry(it.name + ".class") }
             .map { ClassNode().apply { ClassReader(jarFile.getInputStream(it)).accept(this, ClassReader.SKIP_FRAMES) } }
