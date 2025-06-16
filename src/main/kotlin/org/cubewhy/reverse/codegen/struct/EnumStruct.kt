@@ -7,7 +7,7 @@ data class EnumStruct(
     override fun toTypescriptType(): String {
         return """
 enum $name {
-${entries.joinToString(";\n") { "  $it" }}
+${entries.joinToString(",\n") { "  $it" }}
 }
         """.trimIndent()
     }
