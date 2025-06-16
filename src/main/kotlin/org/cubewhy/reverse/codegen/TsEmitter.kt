@@ -44,8 +44,8 @@ fun generateNamespaceTs(functions: List<JsProxiedFunction>): String {
 
         // default methods/fields
         sb.append("${indent}token: string;\n")
-            .append("${indent}subscribe(name: string, cb: () => void): void;\n")
-            .append("${indent}unsubscribe(name: string, cb: () => void): void;\n")
+            .append("${indent}subscribe(name: string, cb: (...args: any[]) => any): void;\n")
+            .append("${indent}unsubscribe(name: string, cb: (...args: any[]) => any): void;\n")
             .append("\n")
 
         for ((name, child) in node.children) {
