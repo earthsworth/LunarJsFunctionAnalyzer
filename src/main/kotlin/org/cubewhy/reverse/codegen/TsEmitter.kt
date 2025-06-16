@@ -82,5 +82,7 @@ declare global {
         lunar: LunarNamespace;
     }
 }
+
+export {};
     """.trimIndent()
 }
