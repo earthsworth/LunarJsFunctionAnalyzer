@@ -20,7 +20,7 @@ fun generateNamespaceTs(functions: List<JsProxiedFunction>): String {
     fun JsProxiedFunction.toTsSignature(): String {
         val paramList =
             descriptor.parameterTypes.mapIndexed { i, type -> "arg$i: ${type.toTsType()}" }.joinToString(", ")
-        return "$functionName($paramList): any;"
+        return "$functionName($paramList): ${descriptor.returnType.toTsType()};"
     }
 
     fun JsProxiedFunction.toTsFunctionImplementation(): String {
