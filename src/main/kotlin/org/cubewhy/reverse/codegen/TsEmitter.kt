@@ -43,10 +43,13 @@ fun generateNamespaceTs(functions: List<JsProxiedFunction>): String {
         sb.append("{\n")
 
         // default methods/fields
-        sb.append("${indent}token: string;\n")
-            .append("${indent}subscribe(name: string, cb: (...args: any[]) => any): void;\n")
-            .append("${indent}unsubscribe(name: string, cb: (...args: any[]) => any): void;\n")
-            .append("\n")
+        if (node.functions[0].namespace == null) {
+            // only add this to the unnamed namespace
+            sb.append("${indent}token: string;\n")
+                .append("${indent}subscribe(name: string, cb: (...args: any[]) => any): void;\n")
+                .append("${indent}unsubscribe(name: string, cb: (...args: any[]) => any): void;\n")
+                .append("\n")
+        }
 
         for ((name, child) in node.children) {
             sb.append("$indent$name?: ${renderInterface(child, "$indent    ")};\n")
